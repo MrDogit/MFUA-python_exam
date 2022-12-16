@@ -30,26 +30,32 @@ def perceptron(sensor):
             else:
                 return False
 
-def decrese(numbers):
+def decrease(numbers):
     for i in range(n_sensor):
         if int (numbers[i])==1:
             w-=1
 
-def increse(numbers):
+def increase(numbers):
     for i in range(n_sensor):
         if int(numbers[i]):
             w+=1
 
 n = 100000
 for i in range(n):
-    j = random.randint(0, 9)
-    r = perceptron(numbers[i])
+    j = random.randint(0, 9) 
+    r = perceptron(numbers[j])
+
     if j != tema:
+        if r:  
+            decrease(numbers[j])
+
+    else:
         if not r:
             increase(numbers[tema])
 
 print(w)
-f_one = list
+f_one = list('111100111001111')
+print( perceptron(f_one))
 
 
 
