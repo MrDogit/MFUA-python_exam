@@ -17,28 +17,33 @@ numsbers = [one, two, three, four, five, six, seven, eight, nine, zero]
 
 tema = 5
 n_sensor = 15
+w = [0 for i in range(15)]
 
 def perceptron(sensor):
     b = 7
     s = 0
 
     for i in range(n_sensor):
-            pass
+            s+=int(sensor[i]) * w[i]
+            if s >= b:
+                return True
+            else:
+                return False
 
-def decrement(numbers):
+def decrese(numbers):
     for i in range(n_sensor):
         if int (numbers[i])==1:
             w-=1
 
-def increment(numbers):
+def increse(numbers):
     for i in range(n_sensor):
         if int(numbers[i]):
             w+=1
 
 n = 100000
-for i in range(i):
-    j = random.randint(0.9)
-    j = perceptron(numbers[i])
+for i in range(n):
+    j = random.randint(0, 9)
+    r = perceptron(numbers[i])
     if j != tema:
         if not r:
             increase(numbers[tema])
