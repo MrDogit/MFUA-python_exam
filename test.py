@@ -19,11 +19,32 @@ full_weight = dict.fromkeys(['weight' + str(i) for i in range(len(numbers))], em
 def smth(weight):
     tmp_weight = weight.copy()
     tmp_weight[1] += 1
-    print(tmp_weight)
-    print(weight)
+    # print(tmp_weight)
+    # print(weight)
     return tmp_weight
 
-print(full_weight, '\n')
+# print(full_weight, '\n')
 full_weight['weight1'] = (smth(full_weight['weight1']))
 smth(full_weight['weight1'])
-print('\n', full_weight)
+# print('\n', full_weight)
+def a():
+    pass
+b = 3
+NoDefault = 0
+d = { a : b, True : 0, NoDefault : 1, None : 12}
+def tea(w, key):
+    NoDefault = object()
+    return tea2(w, NoDefault, key)
+def tea2(w, NoDefault, key = NoDefault):
+    if not key is NoDefault:
+        print('key', key)
+        print('w', w)
+        w = w[key]
+        print('w', w)
+    return w
+print(tea(d, None))
+print(None in d.keys(), d[None])
+
+# def fun(a, b, *, c):
+#     pass
+# fun(1, 2)
