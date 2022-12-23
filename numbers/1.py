@@ -1,3 +1,4 @@
+import multiprocessing as mp
 # import numpy as np
 from basicAI import teaching, perceptron
 
@@ -13,13 +14,11 @@ seven = list('111001001001001')
 eight = list('111101111101111')
 nine =  list('111101111001111')
 numbers = [zero, one, two, three, four, five, six, seven, eight, nine]
-n_sensor = len(n_example)
 
-empty_weight = [0 for i in range(n_sensor)]
+empty_weight = [0 for i in range(len(numbers[0]))]
 full_weight = dict.fromkeys(['weight' + str(i) for i in range(len(numbers))], empty_weight)
 
-# print(full_weight)
-for i in range(len(numbers)):
+def smth(i):
     teaching(i, numbers, full_weight, 'weight' + str(i))
     print(i, 'weight' + str(i), full_weight['weight' + str(i)])
     for ii in range(len(numbers)):
@@ -29,6 +28,20 @@ for i in range(len(numbers)):
             _nice = False
         if ((ii == len(numbers)-1 and not '_nice' in locals()) or ('_nice' in locals() and not _nice == False)):
             print('NICE :)')
+
+# print(full_weight)
+# mp.set_start_method('spawn')
+queue = mp.Queue()
+processes = [mp.Process(target=smth, args=(i)) for i in range(len(numbers))]
+
+for p in processes:
+    p.start()
+
+for p in processes:
+    p.join()
+    
+    
+
 print('\nweigt:', full_weight)
     
 f_one = list('111100111001111')
